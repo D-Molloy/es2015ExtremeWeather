@@ -1,8 +1,9 @@
-export class Http {
+class Http {
   // Static method calls are made directly on the class and are not callable on instances of the class. Static methods are often used to create utility functions.
   static fetchData(url) {
     return new Promise((resolve, reject) => {
       const HTTP = new XMLHttpRequest();
+
       // opening the request
       HTTP.open("GET", url);
       // listening for any changes
