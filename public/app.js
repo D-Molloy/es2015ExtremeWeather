@@ -3,12 +3,15 @@
 // const WeatherData = require("weatherData.js");
 // const WEATHER_PROXY_HANDLER = require("weatherData.js");
 
-const API_KEY = "e860745b2d7b63cc650cbdbf6312b8d9";
+const API_KEY = "YOUR OPENWEATHERMAP API KEY";
 
 function searchWeather() {
   console.log("clicked");
   const CITY_NAME = SEARCH_CITY.value.trim();
   if (CITY_NAME.length === 0) return alert("Please enter a city name");
+
+  LOADING_TEXT.style.display = "block";
+  WEATHER_BOX.style.display = "none";
   const URL = `http://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&units=metric&appid=${API_KEY}`;
   Http.fetchData(URL)
     .then(response => {
@@ -30,7 +33,7 @@ function updateWeather(weatherData) {
   WEATHER_CITY.textContent = weatherData.cityName;
   WEATHER_DESC.textContent = weatherData.description;
   WEATHER_TEMP.textContent = weatherData.temperature;
-
+  LOADING_TEXT.style.display = "none";
   WEATHER_BOX.style.display = "block";
 }
 document.querySelector("button").addEventListener("click", searchWeather);
